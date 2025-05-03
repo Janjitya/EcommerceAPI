@@ -89,25 +89,25 @@ WSGI_APPLICATION = 'ecommerce.wsgi.application'
 
 DB = os.getenv('DB')
 
-if not DB:
+# if not DB:
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': BASE_DIR / 'db.sqlite3',
+#         }
+#     }
+# else:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': os.getenv('PG_PASSWORD'),
+        'HOST': os.getenv("PG_HOST"),
+        'PORT': os.getenv("PG_PORT"),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'railway',
-            'USER': 'postgres',
-            'PASSWORD': os.getenv('PG_PASSWORD'),
-            'HOST': os.getenv("PG_HOST"),
-            'PORT': os.getenv("PG_PORT"),
-        }
-    }
+}
 
 
 # Password validation
